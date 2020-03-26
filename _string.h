@@ -21,7 +21,7 @@ public :
 
     size_t size() const;
 
-    char &at(size_t i);
+    char &at(size_t i) const ;
 
     char &operator()(size_t i);
 
@@ -66,7 +66,7 @@ public :
     friend std::ostream &operator<<(std::ostream &out, const _string &_string);
 
 private :
-    const char *content;
+    char *content;
     size_t length;
 
 };
