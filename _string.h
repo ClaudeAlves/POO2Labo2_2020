@@ -23,7 +23,7 @@ public :
 
     char &at(size_t i) const ;
 
-    char &operator()(size_t i);
+    char &operator[](size_t i);
 
     bool operator==(const _string &other) const;
 
@@ -43,11 +43,11 @@ public :
 
     _string &operator=(const std::string &other);
 
-    _string &set(const _string &other);
+    void set(const _string &other);
 
-    _string &set(const char *const &other);
+    void set(const char *const &other);
 
-    _string &set(const std::string &other);
+    void set(const std::string &other);
 
     _string &append(const _string &other);
 
