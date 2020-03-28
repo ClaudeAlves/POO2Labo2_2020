@@ -61,7 +61,7 @@ public :
 
     _string &operator+=(const std::string &other);
 
-    _string &subString(int begin, int end) const;
+    _string subString(int begin, int end) const;
 
     friend std::ostream &operator<<(std::ostream &out, const _string &_string);
 

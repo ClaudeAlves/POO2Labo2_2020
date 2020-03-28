@@ -142,33 +142,68 @@ void _string::set(const std::string &other) {
 }
 
 _string &_string::append(const _string &other) {
-    return <#initializer#>;
+    char * temp = new char[size()+other.size()+1];
+    if(temp){
+        temp[0]='\0';
+        strcat(temp, content);
+        strcat(temp, other.content);
+        delete[] content;
+        content = new char[strlen(temp)+1];
+        strcpy(content, temp);
+    }
+    return *this;
 }
 
 _string &_string::append(const char *const &other) {
-    return <#initializer#>;
+    char *temp = new char[size() + strlen(other) + 1];
+    if (temp) {
+        temp[0] = '\0';
+        strcat(temp, content);
+        strcat(temp, other);
+        delete[] content;
+        content = new char[strlen(temp) + 1];
+        strcpy(content, temp);
+
+    }
+    return *this;
 }
 
 _string &_string::append(const std::string &other) {
-    return <#initializer#>;
+    char *temp = new char[size() + other.size() + 1];
+    if (temp) {
+        temp[0] = '\0';
+        strcat(temp, content);
+        for (int i = size(); i <= strlen(temp); i++)
+            temp[i] = other.at(i - size());
+        delete[] content;
+        content = new char[strlen(temp) + 1];
+        strcpy(content, temp);
+    }
+    return *this;
 }
 
 _string &_string::operator+=(const _string &other) {
-    return <#initializer#>;
+    return append(other);
 }
 
 _string &_string::operator+=(const char *const &other) {
-    return <#initializer#>;
+    return append(other);
 }
 
 _string &_string::operator+=(const std::string &other) {
-    return <#initializer#>;
+    return append(other);
 }
 
-_string &_string::subString(int begin, int end) const {
-    return <#initializer#>;
+_string _string::subString(int begin, int end) const {
+    if (begin<end and end <= size()){
+        char* substr = new char[end-begin+1];
+        strncpy(substr, &content[begin], end-begin+1);
+        substr[end-begin+1]='\0';
+        return _string(substr);
+    }
+    return _string();
 }
 
 std::ostream &operator<<(std::ostream &out, const _string &_string) {
-    return <#initializer#>;
+    return out <<( _string.size()? _string.content: "empty string");
 }
