@@ -82,7 +82,7 @@ bool _string::equal(const _string &other) const {
 }
 
 bool _string::equal(const char *const &other) const {
-    return strcmp(content, other)==0;;
+    return strcmp(content, other)==0;
 }
 
 bool _string::equal(const std::string &other) const {
